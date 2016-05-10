@@ -31,22 +31,22 @@ class User extends Authenticatable
         return $this->hasMany('App\Cart');
 
    }
+   
+    public function orders(){
 
-   public function products(){
+        return $this->hasMany('App\Order');
 
-        return $this->hasMany('App\Product');
+    }
+
+    public function orderproducts(){
+
+        return $this->hasMany('App\OrderProduct');
 
     }
 
     public function reviews(){
 
         return $this->hasMany('App\Review');
-
-    }
-
-    public function products(){
-
-        return $this->hasMany('App\Order');
 
     }
 

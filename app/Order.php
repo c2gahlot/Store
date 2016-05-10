@@ -9,6 +9,6 @@ class Order extends Model
     public function order_products(){
 
     	return $this->hasMany('App\OrderProduct');
-
+    	
     }
 }

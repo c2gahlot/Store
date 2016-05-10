@@ -15,7 +15,7 @@ class OrderProductRepository {
 
 
     // Getting all the entities from orders table
-	  public function allOrderProducts(){
+	public function allOrderProducts(){
         
             $orderproducts = User::find(Auth::user()->id)->orderproducts;
 
@@ -23,7 +23,7 @@ class OrderProductRepository {
 
     }
 
-	 public function store(Request $request){
+	public function store(Request $request){
 
         $order = $this->createNewOrder();
 
@@ -54,8 +54,8 @@ class OrderProductRepository {
         return User::find(Auth::user()->id)->carts;
     }
 
-public function moveProductsFromCartToOrder($products, $order)
-{
+    public function moveProductsFromCartToOrder($products, $order)
+    {
         foreach ($products as $product) {
         
 
@@ -70,7 +70,7 @@ public function moveProductsFromCartToOrder($products, $order)
 
         }
 
-}
+    }
 
     public function deleteCartProducts(){
 

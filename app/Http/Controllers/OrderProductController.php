@@ -18,21 +18,11 @@ class OrderProductController extends Controller
 
         $this->orderproducts = $orderproducts;
     }
-    public function index(Request $request){
-
-    		$orderproducts = $this->orderproducts->allOrderProducts();
-    		return view('orderproducts.index', compact('orderproducts'));
-
-    }
-
 
    	public function store(Request $request)
     {
     	$order =  $this->orderproducts->store($request);
     	return redirect ('/order/'.$order->id);
-    }
-
-
-   
+    }  
 
 }

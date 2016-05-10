@@ -32,3 +32,9 @@ Route::post('orderproduct', 'OrderProductController@store');
 Route::get('orderproduct' , 'OrderProductController@index');
 
 Route::get('order/{id}', 'OrderController@show');
+
+Route::get('order', ['middleware' => 'auth','uses' => 'OrderController@index']);
+
+Route::post('review', ['middleware' => 'auth','uses' => 'ReviewController@store']);
+
+Route::get('review', ['middleware' => 'auth','uses' => 'ReviewController@index']);
