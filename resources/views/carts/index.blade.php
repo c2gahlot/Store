@@ -10,6 +10,7 @@
 	<!--Method Spoofing-->	
 	<input name="_method" type="hidden" value='delete' />
 	<input type='submit' value='Delete'>
+	</form>
 	<!--
    		 Displaying all the product IDs in the cart with its quantity
    	-->
@@ -20,5 +21,6 @@
     <form action='{{url('orderproduct')}}' method = 'post'>
 	<input name="_token" type="hidden" value="{!! csrf_token() !!}" />
 	<input type='submit' value='Place Order'>
+	</form>
 
 @endsection

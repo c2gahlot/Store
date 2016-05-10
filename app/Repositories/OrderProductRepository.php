@@ -7,13 +7,15 @@ use App\Order;
 use Auth;
 use App\User;
 use App\Cart;
+use App\OrderProduct;
 
 
 class OrderProductRepository {
 
 
+
     // Getting all the entities from orders table
-	  public function allOrder(){
+	  public function allOrderProducts(){
         
             $orderproducts = User::find(Auth::user()->id)->orderproducts;
 
@@ -21,9 +23,6 @@ class OrderProductRepository {
 
     }
 
-    // migrating all order rows to the oder table
-    // fetching all rows in a array from order table
-    // assigning the value to alternative entities
 	 public function store(Request $request){
 
         $order = $this->createNewOrder();
@@ -62,20 +61,20 @@ public function moveProductsFromCartToOrder($products, $order)
 
             $orderproduct = new OrderProduct;
             
+
             $orderproduct->order_id = $order->id;
-            $orderproduct->user_id = $cart->user_id;
-            $orderproduct->product_id = $cart->product_id;
-            $orderproduct->quantity = $cart->quantity;
+            $orderproduct->user_id = $product->user_id;
+            $orderproduct->product_id = $product->product_id;
+            $orderproduct->quantity = $product->quantity;
             $orderproduct->save();
 
         }
 
-    }
+}
 
     public function deleteCartProducts(){
 
-        return App\Cart::where('user_id',Auth::user()->id )->delete();
-
+       return Cart::where('user_id',Auth::user()->id )->delete();
 
 
     }

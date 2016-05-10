@@ -2,9 +2,9 @@
 
 @section('content')
 
-	@foreach ($orderproducts as orderproduct)
+	@foreach ($orderproducts as $orderproduct)
 
-	{{orderproduct->id}}&nbsp;&nbsp;&nbsp;{{orderproduct->product_id}}&nbsp;&nbsp;&nbsp;{{orderproduct->quantity}}</br>
+	{{$orderproducts->order_id}}{{$orderproducts->product_id}}{{$orderproducts->quantity}}
 
 	@endforeach
 

@@ -29,4 +29,6 @@ Route::delete('cart/{id}', ['middleware' => 'auth','uses' => 'CartController@des
 
 Route::post('orderproduct', 'OrderProductController@store');
 
-Route::get('order/{id}' , 'OrderProductController@show');
+Route::get('orderproduct' , 'OrderProductController@index');
+
+Route::get('order/{id}', 'OrderController@show');
