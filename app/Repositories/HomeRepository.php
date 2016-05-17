@@ -12,7 +12,7 @@ class HomeRepository
     public function allProducts(){
         
             //Getting all Products
-            $products = Product::get();
+            $products = Product::available()->get();
 
             //Passing the task array to the view
             return $products;

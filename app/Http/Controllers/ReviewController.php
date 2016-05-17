@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Repositories\ReviewRepository;
 
+use App\Http\Requests\StoreReviewRequest;
+
 class ReviewController extends Controller
 {
     public $reviews;
@@ -29,7 +31,7 @@ class ReviewController extends Controller
     }
 
     //Storing the new entry in the carts table using repository
-    public function store(Request $request){
+    public function store(StoreReviewRequest $request){
 
     	$review =  $this->reviews->store($request);
     	return redirect ('/review');

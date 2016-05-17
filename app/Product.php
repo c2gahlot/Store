@@ -4,15 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\Scopes\StockScope;
-
 class Product extends Model
 {
-    protected static function boot()
+     public function scopeAvailable($query)
     {
-        parent::boot();
-
-        static::addGlobalScope(new StockScope);
+        return $query->where('stock', '>', 0);
     }
 
     public function reviews(){

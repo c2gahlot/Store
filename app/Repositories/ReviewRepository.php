@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Review;
 use Auth;
 use App\User;
+use App\Http\Requests\StoreReviewRequest;
 
 
 class ReviewRepository {
@@ -21,7 +22,7 @@ class ReviewRepository {
     }
 
     // Storing new row to the cart table
-	 public function store(Request $request){
+	 public function store(StoreReviewRequest $request){
 
     	$review = new Review;
 
