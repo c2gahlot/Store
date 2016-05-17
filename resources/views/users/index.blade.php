@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('products._show')
+@include('users._order_list')
 
 @endsection

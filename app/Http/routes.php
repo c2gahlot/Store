@@ -19,6 +19,8 @@ Route::auth();
 
 Route::get('home', 'HomeController@index');
 
+Route::get('product/create','ProductController@create');
+
 Route::get('product/{id}', 'ProductController@show');
 
 Route::post('cart', ['middleware' => 'auth','uses' => 'CartController@store']);
@@ -38,3 +40,7 @@ Route::get('order', ['middleware' => 'auth','uses' => 'OrderController@index']);
 Route::post('review', ['middleware' => 'auth','uses' => 'ReviewController@store']);
 
 Route::get('review', ['middleware' => 'auth','uses' => 'ReviewController@index']);
+
+Route::post('product', 'ProductController@store');
+
+Route::get('user', 'UserController@index');

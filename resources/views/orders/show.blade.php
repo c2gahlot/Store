@@ -7,7 +7,8 @@
 
  	@foreach ($order->order_products as $order_product)
 
- 	 		<li>{{$order_product->product->name}}</li>
+ 	 		<li>{{$order_product->product->name}} {{$order_product->product->price}}</li>
+
 
  	@endforeach
 
