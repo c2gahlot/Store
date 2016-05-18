@@ -24,9 +24,7 @@ class ReviewController extends Controller
     //Showing the list all the products in the cart using allcart funtion from repository
     public function index(Request $request){
     	
-        $reviews = $this->reviews->allReview();
-
-          
+        $reviews = $this->reviews->allReview();          
     	return view('reviews.index', compact('reviews'));
     }
 

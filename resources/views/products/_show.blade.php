@@ -1,41 +1,41 @@
 	<div class="container">
+		
+		<div class='col-md-7'>
+		<div class="row">
+			<div class="panel panel-default">
+			<div class="panel-heading">Product Name</div>
+  			<div class="panel-body">{{$product->name}}</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="panel panel-default">
+			<div class="panel-heading">Product Description</div>
+  			<div class="panel-body">{{$product->description}}</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="panel panel-default">
+			<div class="panel-heading">Price</div>
+  			<div class="panel-body">Rs. {{$product->price}}</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="panel panel-default">
+			<div class="panel-heading">Available Stock</div>
+  			<div class="panel-body">{{$product->stock}}</div>
+			</div>
+		</div>
+		</div>
+		
+		<div class='col-md-4 col-md-offset-1'>
+		<div class="row">
+			@include('carts._form') <br/>
+		</div>
+		<div class="row">	
+			@include('reviews._form') <br/>
+		</div>
 
-
-
-
-
-	<!--
-   	 Showing name of the product
-   	-->
-	<h3>Title</h3>
-	<h5>{{$product->name}}</h5></br>
-	<!--
-   	 Showing description of the product
-   	-->
-	<h3>Description</h3>
-	<h5>{{$product->description}}</h5></br>
-
-	<!--
-   	 Showing price of the product
-   	-->
-	<h3>Price</h3>
-	<h5>Rs.&nbsp;&nbsp;{{$product->price}}</h5></br>
-
-	<!--
-   	 Showing available of the product
-   	-->
-	<h3>Available Stock</h3>
-	<h5>Rs.&nbsp;&nbsp;{{$product->stock}}</h5></br>
-
-	<!--
-   	From to add product to the cart
-   	-->   	
-
-	@include('carts._form') <br/>
-
-	@include('reviews._form') <br/>
-
-	<h3>Reviews</h3>
+	</div>
 
 	@include('reviews._list', ['reviews' => $product->reviews])
 

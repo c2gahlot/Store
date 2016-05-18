@@ -10,18 +10,16 @@ use App\Cart;
 use App\OrderProduct;
 
 
-class OrderRepository {
+class UserRepository {
 
-	protected $orders;
+	protected $users;
 
     // Getting all the entities from orders table
-	public function allOrder(){
+	public function allUser(){
         
-			$orders = User::find(Auth::user()->id)->orders;
+			$users = User::with('orders.order_products.product')->find(Auth::user()->id);
 
-			//$orders = Order::with("order_products")->get();
-
-            return $orders;
+            return $users;
 
     }
 

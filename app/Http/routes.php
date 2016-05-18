@@ -17,30 +17,28 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('home', 'HomeController@index');
+Route::get('home', ['middleware' => 'auth','uses' => 'HomeController@index']);
 
-Route::get('product/create','ProductController@create');
+Route::post('product', ['middleware' => 'auth','uses' => 'ProductController@store']);
 
-Route::get('product/{id}', 'ProductController@show');
+Route::get('product/create', ['middleware' => 'auth','uses' => 'ProductController@create']);
 
-Route::post('cart', ['middleware' => 'auth','uses' => 'CartController@store']);
+Route::get('product/{id}', ['middleware' => 'auth','uses' => 'ProductController@show']);
 
 Route::get('cart', ['middleware' => 'auth','uses' => 'CartController@index']);
 
+Route::post('cart', ['middleware' => 'auth','uses' => 'CartController@store']);
+
 Route::delete('cart/{id}', ['middleware' => 'auth','uses' => 'CartController@destroy']);
 
-Route::post('orderproduct', 'OrderProductController@store');
-
-Route::get('orderproduct' , 'OrderProductController@index');
-
-Route::get('order/{id}', 'OrderController@show');
+Route::post('orderproduct', ['middleware' => 'auth','uses' => 'OrderProductController@store']);
 
 Route::get('order', ['middleware' => 'auth','uses' => 'OrderController@index']);
+
+Route::post('order/{id}', ['middleware' => 'auth','uses' => 'UserController@store']);
 
 Route::post('review', ['middleware' => 'auth','uses' => 'ReviewController@store']);
 
 Route::get('review', ['middleware' => 'auth','uses' => 'ReviewController@index']);
 
-Route::post('product', 'ProductController@store');
-
-Route::get('user', 'UserController@index');
+Route::get('user', ['middleware' => 'auth','uses' => 'UserController@index']);
