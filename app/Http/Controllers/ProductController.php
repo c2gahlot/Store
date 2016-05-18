@@ -18,6 +18,8 @@ class ProductController extends Controller
 
 		$this->products = $products;
 
+        $this->middleware('auth')->except(['create', 'store']);
+
 	}
 
 	public function create(){

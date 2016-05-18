@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\OrderProductRepository;
+use App\Jobs\SendOrderEmail;
 
 use App\Http\Requests;
 use App\Order;
@@ -19,10 +20,17 @@ class OrderProductController extends Controller
         $this->orderproducts = $orderproducts;
     }
 
+    public function sendOrderEmail(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $this->dispatch(new SendOrderEmail($user));
+    }
 
    	public function store(Request $request)
     {
     	$order =  $this->orderproducts->store($request);
+        
     	return redirect ('/order/'.$order->id);
     }  
 

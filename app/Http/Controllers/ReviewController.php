@@ -8,7 +8,11 @@ use App\Http\Requests;
 
 use App\Repositories\ReviewRepository;
 
+use App\Review;
+
 use App\Http\Requests\StoreReviewRequest;
+
+use Gate;
 
 class ReviewController extends Controller
 {
@@ -33,6 +37,24 @@ class ReviewController extends Controller
 
     	$review =  $this->reviews->store($request);
     	return redirect ('/review');
+    }
+
+    public function destroy($id){
+
+        $review = Review::findOrFail($id);
+
+        if (Gate::denies('destroy', $review)) {
+            
+            return 'Not Allowed';
+        }
+
+        else{
+
+            Review::destroy($id);
+
+            return redirect('/review');
+        }
+
     }
 
 }

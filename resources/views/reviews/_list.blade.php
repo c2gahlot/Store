@@ -18,6 +18,7 @@
 						<th>Review ID</th>
 						<th>Product Name</th>
 						<th>Review</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 
@@ -27,6 +28,15 @@
 						<th>{{$review->id}}</th>
 						<th>{{$review->product->name}}</th>
 						<th>{{$review->description}}</th>
+						<th>
+							<form action='{{url('review/'.$review->id)}}' method='post'>
+								<input name="_token" type="hidden" value="{!! csrf_token() !!}" />
+
+								<!--Method Spoofing-->	
+								<input name="_method" type="hidden" value='delete' />
+								<input type = "submit" class="btn btn-danger" value = "Submit" />
+							</form>
+						</th>
 					</tr>
 					@endforeach
 				</tbody>

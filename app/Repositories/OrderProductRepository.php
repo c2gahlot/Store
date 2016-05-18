@@ -8,7 +8,6 @@ use Auth;
 use App\User;
 use App\Cart;
 use App\OrderProduct;
-use App\Jobs\SendOrderEmail;
 
 class OrderProductRepository {
 
@@ -77,13 +76,6 @@ class OrderProductRepository {
        return Cart::where('user_id',Auth::user()->id )->delete();
 
 
-    }
-
-    public function sendOrderEmail(Request $request, $id)
-    {
-        $user = User::findOrFail($id);
-
-        $this->dispatch(new SendOrderEmail($user));
     }
 
 }

@@ -11,8 +11,6 @@ use App\User;
 class ProductRepository {
 
 
-    protected $products;
-
     // Getting all the entities from products table
 	  public function allProduct(){
         

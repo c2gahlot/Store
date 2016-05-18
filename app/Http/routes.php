@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::auth();
 
+
 Route::get('home', ['middleware' => 'auth','uses' => 'HomeController@index']);
 
 Route::post('product', ['middleware' => 'auth','uses' => 'ProductController@store']);
@@ -33,12 +34,14 @@ Route::delete('cart/{id}', ['middleware' => 'auth','uses' => 'CartController@des
 
 Route::post('orderproduct', ['middleware' => 'auth','uses' => 'OrderProductController@store']);
 
-Route::get('order', ['middleware' => 'auth','uses' => 'OrderController@index']);
+Route::get('order/{id}', ['middleware' => 'auth','uses' => 'UserController@show']);
 
 Route::post('order/{id}', ['middleware' => 'auth','uses' => 'UserController@store']);
 
+Route::get('review', ['middleware' => 'auth','uses' => 'ReviewController@index']);
+
 Route::post('review', ['middleware' => 'auth','uses' => 'ReviewController@store']);
 
-Route::get('review', ['middleware' => 'auth','uses' => 'ReviewController@index']);
+Route::delete('review/{id}', ['middleware' => 'auth','uses' => 'ReviewController@destroy']);
 
 Route::get('user', ['middleware' => 'auth','uses' => 'UserController@index']);
