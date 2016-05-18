@@ -17,8 +17,6 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::test();
-
 Route::get('home', ['middleware' => 'auth','uses' => 'HomeController@index']);
 
 Route::post('product', ['middleware' => 'auth','uses' => 'ProductController@store']);
