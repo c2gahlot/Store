@@ -27,7 +27,7 @@ Route::get('product/{id}', ['middleware' => 'auth','uses' => 'ProductController@
 
 Route::get('cart', ['middleware' => 'auth','uses' => 'CartController@index']);
 
-Route::post('cart', ['middleware' => 'auth','uses' => 'CartController@store']);
+Route::post('cart', ['middleware' => ['auth', 'purchase'],'uses' => 'CartController@store']);
 
 Route::delete('cart/{id}', ['middleware' => 'auth','uses' => 'CartController@destroy']);
 
