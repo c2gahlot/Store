@@ -7,21 +7,22 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Contracts\Mail\Mailer;
+use Mail;
 
 class SendOrderEmail extends Job implements ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 
-    public $user;
+    public $email;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($email)
     {
-        $this->user = $user;
+        $this->email = $email;
     }
 
     /**
@@ -29,12 +30,16 @@ class SendOrderEmail extends Job implements ShouldQueue
      *
      * @return void
      */
-    public function handle(Mailer $mailer)
+    
+    public function handle()
     {
-        $mailer->send('emails.reminder', ['user' => $this->user], function ($m) {
-            //
+        
+        Mail::send('emails.order', ['email' => $this->email], function ($m) {
+            
+            // $m->from('shubhamgahlot@instaveritas.com', 'Store App');
+
+            $m->to($this->email)->subject('Order Successfull');
         });
 
-        $this->user->reminders()->create(...);
     }
 }

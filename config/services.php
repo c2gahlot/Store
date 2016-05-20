@@ -19,6 +19,20 @@ return [
         'secret' => env('MAILGUN_SECRET'),
     ],
 
+    'mailtrap' => [
+        "driver" => "smtp",
+        "host" => "mailtrap.io",
+        "port" => 2525,
+        "from" => [
+          "address" => "from@example.com",
+          "name" => "Example"
+        ],
+        "username" => "9426d598be3a7f",
+        "password" => "afa0fce3d087f2",
+        "sendmail" => "/usr/sbin/sendmail -bs",
+        "pretend" => false
+    ],    
+
     'ses' => [
         'key' => env('SES_KEY'),
         'secret' => env('SES_SECRET'),

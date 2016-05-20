@@ -31,11 +31,11 @@
 						<th>
 							<form action='{{url('review/'.$review->id)}}' method='post'>
 								<input name="_token" type="hidden" value="{!! csrf_token() !!}" />
-
 								<!--Method Spoofing-->	
 								<input name="_method" type="hidden" value='delete' />
 								<input type = "submit" class="btn btn-danger" value = "Submit" />
 							</form>
+
 						</th>
 					</tr>
 					@endforeach

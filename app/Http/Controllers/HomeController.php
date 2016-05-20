@@ -6,6 +6,8 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Repositories\HomeRepository;
+use App\Jobs\SendOrderEmail;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -31,6 +33,11 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $products = $this->products->allProducts();
+        // $email = Auth::user()->email;
+        
+        // $job = new SendOrderEmail($email);
+        // $this->dispatch($job);
+        
         return view('home', compact('products'));
     }
 }
